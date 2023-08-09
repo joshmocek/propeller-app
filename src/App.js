@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { Box, Button } from "@mui/material";
+import MaterialSolution from "./MaterialSolution/MaterialSolution";
+import BareSolution from "./BareSolution/BareSolution";
 
 function App() {
+  const [selectedOption, setSelectedOption] = useState(() => "option1");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Box>
+        <Button
+          onClick={() => {
+            setSelectedOption("option1");
+          }}
+          sx={{ m: 1 }}
+          variant="contained"
         >
-          Learn React
-        </a>
-      </header>
+          Material Solution
+        </Button>
+        <Button
+          onClick={() => {
+            setSelectedOption("option2");
+          }}
+          sx={{ m: 1 }}
+          variant="contained"
+        >
+          Bare Solution
+        </Button>
+      </Box>
+      <Box sx={{ m: 1 }}>
+        {selectedOption === "option1" ? <MaterialSolution /> : <BareSolution />}
+      </Box>
     </div>
   );
 }
